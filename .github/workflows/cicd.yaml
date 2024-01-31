@@ -40,3 +40,5 @@ jobs:
       - run: cat ~/.aws/credentials
       - run: aws configure list-profiles
       - run: aws s3 ls --region eu-central-1 --profile Abi_AWS
+      - uses: hashicorp/setup-terraform@v2
+      - run: terraform version
