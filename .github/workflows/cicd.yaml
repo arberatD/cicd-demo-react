@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Terraform Apply
 run-name: ${{ github.actor }} is testing out GitHub Actions
 
 on: [push]
@@ -42,6 +42,7 @@ jobs:
       - run: aws s3 ls --region eu-central-1 --profile Abi_AWS
       - uses: hashicorp/setup-terraform@v2
       - run: terraform version
-      - run: terraform -chdir=./infra init
-      - run: terraform -chdir=./infra validate
-      - run: terraform -chdir=./infra apply -auto-approve
+    #   - run: terraform -chdir=./infra init
+    #   - run: terraform -chdir=./infra validate
+    #   - run: terraform -chdir=./infra apply -auto-approve
+      - run: aws s3 sync --region eu-central-1 ./build s3://my-website-bucket-abi/ --profile Abi_AWS
